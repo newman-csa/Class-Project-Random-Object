@@ -66,7 +66,11 @@ public class Player {
         private double multiplier;
 
         public Card() {
-
+            this.title = "Blank";
+            this.type = "noamal";
+            this.health = 100;
+            this.damage = 10;
+            this.multiplier = 1;
         }
 
         public Card(String title, String type, int health, int damage, double multiplier) {
