@@ -1,37 +1,3 @@
-// NOTE: NOT FINISHED
-
-// Player is an outer class
-
-// Constructor:
-// String name of player
-// Int number of cards the player starts with
-
-// Getter/Setter:
-// Get the number of current cards the player has.
-// Get/set player name
-
-// Methods:
-// If player has no cards return loseState boolean of false.
-// Make random card with random values
-
-// Card is an inner class of Player
-
-// Constructor:
-// What type of card is it
-// String Title of card
-// Int health the card has
-// Int Damage to the card
-// Double Card multiplier
-
-// Getters/Setters:
-// Grabs all info
-// Info for health can be removed by another cars damage to preform an attack
-
-// Methods:
-// A Method that attacks another card using the getter and setters from before
-// A Method that receives damage from another card
-// A Method that declares a card dead
-
 public class Player {
     private String name;
     protected int amountCards;
@@ -46,16 +12,24 @@ public class Player {
         this.amountCards = amountCards;
     }
 
-    public int getAmountCards() {
-        return amountCards;
-    }
-
     public String getName() {
         return name;
     }
 
+    public int getAmountCards() {
+        return amountCards;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAmountCards(int amountCards) {
+        this.amountCards = amountCards;
+    }
+
     public boolean loseState() {
-        return amountCards == 0;
+        return getAmountCards() == 0;
     }
 
     public class Card {
@@ -81,13 +55,60 @@ public class Player {
             this.multiplier = multiplier;
         }
 
+        public String getTitle() {
+            return title;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public int getHealth() {
+            return health;
+        }
+
+        public int getDamage() {
+            return damage;
+        }
+
+        public double getMultiplier() {
+            return multiplier;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public void setHealth(int health) {
+            this.health = health;
+        }
+
+        public void setDamage(int damage) {
+            this.damage = damage;
+        }
+
+        public void setMultiplier(double multiplier) {
+            this.multiplier = multiplier;
+        }
+
+        public void takeDamage(int damageReceived) {
+            this.health -= damageReceived;
+        }
+
+        public boolean isDead() {
+            return getHealth() <= 0;
+        }
     }
 }
 
 // --The following is in Boss.java--
 // public class Boss extends Player {
 
-//     public class BossCard extends Player.Card {
+// public class BossCard extends Player.Card {
 
-//     }
+// }
 // }
