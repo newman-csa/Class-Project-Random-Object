@@ -64,7 +64,7 @@ public class Game {
                 for (Player.Card card : p1deck) {
                     card.setMultiplier(1 + (p1.amountCardDead() * 0.25));
                 }
-                System.out.println(p1.getName() + " has " + p1.amountCardDead() + " cards, giving them a "
+                System.out.println(p1.getName() + " has " + p1.amountCardDead() + " card(s), giving them a "
                         + (p1.amountCardDead() * 0.25) + " multiplier");
             }
 
