@@ -20,7 +20,7 @@ public class Game {
         Player.Card p1c2 = p1.new Card();
         Player.Card[] p1deck = { p1c1, p1c2 };
         Player p2 = new Player("Talus", deckSize);
-        Player.Card p2c1 = p2.new Card();
+        Player.Card p2c1 = p2.new Card("Ethereal", "Void", 150, 20, 1.2);
         Player.Card p2c2 = p2.new Card();
         Player.Card[] p2deck = { p2c1, p2c2 };
 
@@ -64,8 +64,8 @@ public class Game {
                 for (Player.Card card : p1deck) {
                     card.setMultiplier(1 + (p1.amountCardDead() * 0.25));
                 }
-                System.out.println(p1.getName() + "has " + p1.amountCardDead() + "cards, giving them a "
-                        + (p1.amountCardDead() * 0.25) + "multiplier");
+                System.out.println(p1.getName() + " has " + p1.amountCardDead() + "c ards, giving them a "
+                        + (p1.amountCardDead() * 0.25) + " multiplier");
             }
 
         }
