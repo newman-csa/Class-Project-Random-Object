@@ -1,15 +1,17 @@
 public class Player {
     private String name;
+    private int totalCards;
     protected int amountCards;
 
     public Player() {
         this.name = "Default";
-        this.amountCards = 8;
+        this.amountCards = 2;
     }
 
     public Player(String name, int amountCards) {
         this.name = name;
         this.amountCards = amountCards;
+        this.totalCards = amountCards;
     }
 
     public String getName() {
@@ -18,6 +20,10 @@ public class Player {
 
     public int getAmountCards() {
         return amountCards;
+    }
+
+    public int getTotalCards() {
+        return totalCards;
     }
 
     public void setName(String name) {
@@ -32,6 +38,10 @@ public class Player {
         return getAmountCards() == 0;
     }
 
+    public int amountCardDead() {
+        return getTotalCards() - getAmountCards();
+    }
+
     public class Card {
         private String title;
         private String type;
@@ -40,11 +50,11 @@ public class Player {
         private double multiplier;
 
         public Card() {
-            this.title = "Blank";
-            this.type = "noamal";
+            this.title = "Basic";
+            this.type = "normal";
             this.health = 100;
-            this.damage = 10;
-            this.multiplier = 1;
+            this.damage = 25;
+            this.multiplier = 1.0;
         }
 
         public Card(String title, String type, int health, int damage, double multiplier) {
@@ -95,12 +105,34 @@ public class Player {
             this.multiplier = multiplier;
         }
 
+        public int attack() {
+            return (int) (getDamage() * getMultiplier());
+        }
+
         public void takeDamage(int damageReceived) {
-            this.health -= damageReceived;
+            setHealth(getHealth() - damageReceived);
+            if (getHealth() <= 0) {
+                setAmountCards(getAmountCards()-1);
+            }
         }
 
         public boolean isDead() {
-            return getHealth() <= 0;
+            if (getHealth() <= 0) {
+                return true;
+            }
+            return false;
+        }
+
+        public void printStats() {
+            if (isDead()) {
+                System.out.println(getTitle() + ": Dead");
+            } else {
+                System.out.println(getTitle());
+                System.out.println("Health: " + getHealth());
+                System.out.println("Type: " + getType());
+                System.out.println("Damage: " + getDamage());
+                System.out.println("Multiplier: " + getMultiplier());
+            }
         }
     }
 }
